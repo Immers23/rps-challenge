@@ -14,7 +14,15 @@ class Rps < Sinatra::Base
 
   get '/play' do
     @name = session[:name]
+    @shape = session[:shape]
+    @openent_shape = session[:openent_shape]
     erb :play
+  end
+
+  post '/play' do
+    session[:shape] = params[:shape]
+    session[:openent_shape] = :rock
+    redirect '/play'
   end
 
 
